@@ -1,0 +1,23 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build the Docker image
+      run: docker build -t webvihaan:v1
+  # Test running container
+    - name: Run container test
+      run: |
+        docker run --name webvihaan_test -d -p 8080:80 webvihaan:v1
+        sleep 10
+        docker ps -a
+        docker logs webvihaan_test
