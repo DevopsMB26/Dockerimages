@@ -1,0 +1,13 @@
+services:
+  web1:
+   image: webvihaan:v1
+  web2:
+   image: webvihaan:v1
+  web3:
+   image: webvihaan:v1
+  lb:
+   image: nginx
+   ports: 
+    - "8080:80"
+   volumes:
+    - ./lb.conf:/etc/nginx/conf.d/default.conf
