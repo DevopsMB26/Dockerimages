@@ -13,7 +13,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
-      run: docker build -t webvihaan:v1
+      run: docker buildx build -t webvihaan:v1 . 
   # Test running container
     - name: Run container test
       run: |
